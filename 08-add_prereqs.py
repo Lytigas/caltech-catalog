@@ -64,8 +64,6 @@ for course in catalog:
             )
             return p
 
-    print(course["prereq"])
-    print(pr)
     pr = [canonicalize(p) for p in pr]
     course["c_prereq"] = [p for p in pr if p is not None]
 
