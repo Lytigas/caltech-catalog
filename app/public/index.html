@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Caltech classtree generator</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <form id="gen-form" action="error.html" , type="get">
+          <label for="input-code">
+            Input class code (e.g. "CDS 243")
+          </label>
+          <input id="input-code" name="code" />
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
+      <hr />
+      <section id="error"></section>
+      <section id="info"></section>
+      <section>
+        <div id="render"></div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.0.4/dist/fuse.basic.min.js"></script>
+    <script src="//d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
