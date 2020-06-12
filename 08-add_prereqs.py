@@ -14,7 +14,7 @@ for course in catalog:
     index[num].append(course["code"])
     codeset.add(course["code"])
 
-# This documents fucky things in the catalog as of writing
+# This documents weird things in the catalog as of writing
 MANUAL_REWRITE_RULES = {
     "AM 125": None,  # as far as I can tell this course never existed
     "ME 35": None,  # this one no longer exists
@@ -52,17 +52,13 @@ for course in catalog:
                 print(
                     f"Warning: found multiple candidates for {p} when canonicalizing: {candidates}. Selecting the first."
                 )
-            if len(candidates) <= 0:
-                print(
-                    f"Warning: found no candidates for code {p} when canonicalizing. Will return as-is"
-                )
-                return p
-            return candidates[0]
-        else:
-            print(
-                f"Warning: found no candidates for code {p} when canonicalizing. Will return as-is"
-            )
-            return p
+            if len(candidates) >= 1:
+                print(f"Resolved the ambiguous {p} to {candidates[0]}")
+                return candidates[0]
+        print(
+            f"Warning: found no candidates for code {p} when canonicalizing. Will return as-is"
+        )
+        return p
 
     pr = [canonicalize(p) for p in pr]
     course["c_prereq"] = [p for p in pr if p is not None]
