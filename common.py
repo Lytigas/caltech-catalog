@@ -10,6 +10,6 @@ def parse_code(valid_code):
 
 
 def canonicalize(valid_code):
-    dept, num = parse_code(valid_code)
+    dept, num = parse_code(valid_code.upper())
     dept = "/".join(sorted(dept.split("/")))
-    return (dept + " " + str(num)).upper()
+    return dept + " " + str(num)

@@ -25,7 +25,7 @@ MANUAL_REWRITE_RULES = {
     "MATH 2": "MA 2",
     "MATH 1": "MA 2",
     "ACM 100": "ACM 95",  # this course has two names
-    "PH/A 125": "PH 125",  # this stems from the phrase "Ch 125 a/Ph 125 a"
+    "A/PH 125": "PH 125",  # this stems from the phrase "Ch 125 a/Ph 125 a"
 }
 
 for course in catalog:
