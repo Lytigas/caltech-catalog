@@ -1,6 +1,7 @@
 # Caltech Class Trees
 
-Creates rendering of class prerequisites at Caltech, like these:
+Creates rendering of class prerequisites at Caltech, like those below.
+Make your own at [classtrees.lyt.gs](https://classtrees.lyt.gs).
 
 ![highlight](renderings/highlight_ay219_cds243.png)
 
