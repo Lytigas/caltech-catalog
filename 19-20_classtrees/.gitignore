@@ -1,0 +1,10 @@
+02-all_courses_scraped.json
+05-all_courses_with_codes.json
+07-all_courses_merged.json
+09-all_courses_with_prereqs.json
+10-output_dot.py
+11-gen-graph.sh
+13-rasterize.sh
+12-graph.ps
+14-graph.png
+15-copy-finals.sh
