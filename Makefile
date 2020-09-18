@@ -1,5 +1,5 @@
 SHELL := bash
-.ONESHELL:
+# .ONESHELL:
 .SHELLFLAGS := -eu -o pipefail -c
 .DELETE_ON_ERROR:
 MAKEFLAGS += --warn-undefined-variables
@@ -10,3 +10,8 @@ webapp:
 	jq -c '[ .[] | {code, c_prereq} ]' < 19-20_classtrees/09-all_courses_with_prereqs.json > app/public/trees/data.json
 	(cd 20-21_catalog_search; $(MAKE) webapp)
 	cp 20-21_catalog_search/08-final_catalog.json app/public/search/data.json
+.PHONY: webapp
+
+serve: webapp
+	(cd app/public; python3 -m http.server)
+.PHONY: serve

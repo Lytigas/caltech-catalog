@@ -16,20 +16,25 @@ txt_blocks = txt_blocks[first_block_idx:]
 txt_blocks = filter(bool, txt_blocks)  # remove empty strings
 
 # Strip lines that are all caps
-def remove_first_line_if_form_feed_prefix(s):
-    if s[0] == "\x0c":
-        return "".join(s.splitlines(True)[2:])  # \f is its own line
-    return s
-
-
 def strip_course_prefix(s):
     if s.startswith("Courses\f"):
         return s[len("Courses\f") :]
     return s
 
 
-txt_blocks = map(remove_first_line_if_form_feed_prefix, txt_blocks)
+def strip_form_feed_prefix(s):
+    if s.startswith("\f"):
+        return s[len("\f") :]
+    return s
+
+
+def remove_all_caps_prefixes(s):
+    return "".join(filter(lambda line: not line.isupper(), s.splitlines(True)))
+
+
 txt_blocks = map(strip_course_prefix, txt_blocks)
+txt_blocks = map(strip_form_feed_prefix, txt_blocks)
+txt_blocks = map(remove_all_caps_prefixes, txt_blocks)
 
 PREREQ_FINDER_RE = re.compile("Prerequisites?:.+?\.")
 
@@ -60,6 +65,7 @@ for block in txt_blocks:
                 "prereqs": extract_prereqs_txt(block),
             }
         )
+
 # merge courses by code, prefering the longer descriptions
 preqs_index = defaultdict(list)
 for course in prereqs_list:
