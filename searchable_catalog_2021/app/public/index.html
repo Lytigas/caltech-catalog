@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Caltech Searchable Catalog 2020-2021</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+    <script defer src="script.js" type="module"></script>
+    <style>
+      .course-list > div {
+        border: 1px solid var(--color-bg-secondary);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow) var(--color-shadow);
+        margin: 1rem;
+        padding: 1.25rem;
+        width: 100%;
+        /* width: var(--width-card); */
+      }
+
+      .course-list > div {
+        box-shadow: var(--box-shadow) var(--color-bg-secondary);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Fuzzy-Searchable Caltech Catalog</h1>
+      </header>
+      <section>
+        <form id="gen-form" action="error.html" , type="get">
+          <label for="input-info">Search</label>
+          <input id="input-info" name="info" />
+        </form>
+      </section>
+      <hr />
+      <section id="error"></section>
+      <div id="render"></div>
+    </main>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-02-all_courses_scraped.json
+./02-all_courses_scraped.json
 05-all_courses_with_codes.json
 07-all_courses_merged.json
 09-all_courses_with_prereqs.json
