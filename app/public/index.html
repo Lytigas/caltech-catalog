@@ -9,33 +9,24 @@
   <body>
     <main>
       <header>
-        <h1>Caltech Class Trees</h1>
-        <p>Visualize prerequisites from Caltech's Catalog.</p>
+        <h1>Caltech Catalog Stuff</h1>
+        <p>Tools for the Caltech catalog.</p>
         <p>
-          See disclaimers and info on
-          <a href="https://github.com/Lytigas/caltech-class-trees">GitHub</a>.
+          See source code and info on
+          <a href="https://github.com/Lytigas/caltech-catalog">GitHub</a>.
         </p>
       </header>
       <section>
-        <form id="gen-form" action="error.html" , type="get">
-          <label for="input-code">
-            Input class code (e.g. "CDS 243")
-          </label>
-          <input id="input-code" name="code" />
-          <input type="submit" value="Submit" />
-        </form>
-      </section>
-      <hr />
-      <section id="error"></section>
-      <section id="info"></section>
-      <section>
-        <div id="render"></div>
+        <ul>
+          <li>
+            <a href="./search">Fuzzy Catalog Search</a> - better than a 500-page
+            pdf.
+          </li>
+          <li>
+            <a href="./trees">Classtrees</a> - visualize course prerequisites.
+          </li>
+        </ul>
       </section>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.0.4/dist/fuse.basic.min.js"></script>
-    <script src="//d3js.org/d3.v5.min.js"></script>
-    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
-    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>
