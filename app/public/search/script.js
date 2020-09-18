@@ -49,9 +49,10 @@ document.getElementById("gen-form").addEventListener("submit", (e) => {
 fetch("./data.json")
   .then((resp) => resp.json())
   .then((data) => {
-    // add unique key items for faster lit HTML
     for (let i = 0; i < data.length; i++) {
-      data[i].unique_id = i;
+      data[i].unique_id = i; // add unique key items for faster lit HTML
+      data[i].departments = data[i].label.split(" ")[0].split("/"); // prioritize departments
+      data[i].number = data[i].label.split(" ")[1]; // prioritize number
     }
     let fuse = new Fuse(data, {
       isCaseSensitive: false,
@@ -60,11 +61,15 @@ fetch("./data.json")
       keys: [
         {
           name: "label",
-          weight: 150,
+          // weigh it low, because content is better covered by departments
+          // and number. Otherwise, searches like ACM 104 go to ACM 105 rather
+          // than ACM/IDS 104, because of the longer contiguous match. We keep
+          // it in the running for the a/b/c match potential.
+          weight: 40,
         },
         {
           name: "title",
-          weight: 90,
+          weight: 80,
         },
         {
           name: "units",
@@ -76,11 +81,23 @@ fetch("./data.json")
         },
         {
           name: "instructors",
-          weight: 20,
+          weight: 15,
+        },
+        {
+          name: "prerequisites",
+          weight: 25,
         },
         {
           name: "description",
-          weight: 30,
+          weight: 35,
+        },
+        {
+          name: "departments",
+          weight: 100,
+        },
+        {
+          name: "number",
+          weight: 100,
         },
       ],
       ignoreLocation: true,
